@@ -1,7 +1,19 @@
 FROM ubuntu:latest AS buildbox
 
 RUN apt update && apt upgrade -y \
-    && apt install -y --no-install-recommends git curl ca-certificates clang pkg-config libssl-dev libudev-dev libapt-pkg-dev libfuse3-dev acl-dev uuid-dev libsystemd-dev libsgutils2-dev dpkg-dev
+    && apt install -y --no-install-recommends \
+        git curl ca-certificates clang \
+        pkg-config \
+        libssl-dev \
+        libudev-dev \
+        libapt-pkg-dev \
+        libfuse3-dev \
+        libpam-dev \
+        acl-dev \
+        uuid-dev \
+        libsystemd-dev \
+        libsgutils2-dev \
+        dpkg-dev
 RUN curl --proto '=https' --tlsv1.3 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="${PATH}:/root/.cargo/bin"
 RUN cargo version
