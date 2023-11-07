@@ -2,7 +2,9 @@ FROM ubuntu:latest AS buildbox
 
 RUN apt update && apt upgrade -y \
     && apt install -y --no-install-recommends \
-        git curl ca-certificates clang \
+        git curl ca-certificates build-essential bash-completion \
+        debhelper cargo:native dh-cargo \
+        jq \
         pkg-config \
         libssl-dev \
         libudev-dev \
